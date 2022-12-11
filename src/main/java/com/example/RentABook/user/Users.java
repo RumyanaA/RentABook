@@ -2,46 +2,41 @@ package com.example.RentABook.user;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table
-public class User {
+public class Users implements Serializable{
     @Id
-    @SequenceGenerator(
-            name="user_sequence",
-            sequenceName = "user_sequence",
-            allocationSize = 1
-
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "user_sequence"
-    )
+    @GeneratedValue
     private Long id;
     private String name;
+    @Column(unique = true)
     private String email;
     private String password;
-    private Boolean is_admin;
+    @Column(name="is_admin")
+    private Boolean isAdmin;
 
-    public User() {
+    public Users() {
     }
 
-    public User(Long id) {
+    public Users(Long id) {
         this.id = id;
     }
 
-    public User(Long id, String name, String email, String password, Boolean is_admin) {
+    public Users(String name, String email, String password, Boolean isAdmin) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
+
+    public Users(Long id, String name, String email, String password, Boolean isAdmin) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.is_admin = is_admin;
-    }
-
-    public User(String name, String email, String password, Boolean is_admin) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.is_admin = is_admin;
+        this.isAdmin = isAdmin;
     }
 
     public Long getId() {
@@ -76,11 +71,11 @@ public class User {
         this.password = password;
     }
 
-    public Boolean getIs_admin() {
-        return is_admin;
+    public Boolean getIsAdmin() {
+        return isAdmin;
     }
 
-    public void setIs_admin(Boolean is_admin) {
-        this.is_admin = is_admin;
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }
