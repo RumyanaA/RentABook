@@ -6,16 +6,16 @@ import java.io.Serializable;
 
 @Entity
 @Table
-public class Genres implements Serializable {
+public class Genre implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
     @Column(unique = true)
     private String name;
-    public Genres() {
+    public Genre() {
     }
 
-    public Genres(Long id, String name) {
+    public Genre(Long id, String name) {
         this.id = id;
         this.name = name;
     }

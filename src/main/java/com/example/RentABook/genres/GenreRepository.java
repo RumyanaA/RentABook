@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface GenresRepository extends JpaRepository<Genres,Long> {
-    @Query("select g from Genres g order by g.name")
-    List<Genres> getAllGenres();
+public interface GenreRepository extends JpaRepository<Genre,Long> {
+    @Query("select g from Genre g order by g.name")
+    List<Genre> getAllGenres();
 }
