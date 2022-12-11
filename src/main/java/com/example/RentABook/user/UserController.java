@@ -18,4 +18,8 @@ public class UserController {
         userService.addNewUser(user);
     }
 
+    @GetMapping()
+    public UserNameAndEmail getUser(@RequestParam String name, String email) {
+        return userService.getUser(name,email);
+    }
 }
